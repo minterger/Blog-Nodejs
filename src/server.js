@@ -39,6 +39,7 @@ app.use((req, res, next) => {
 });
 
 // helpers
+require('./helpers/hbs')
 
 // routes
 app.use(require('./routes/index.routes'));
