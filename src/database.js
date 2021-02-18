@@ -1,6 +1,9 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/blog', {
+const {MONGODB_IP, MONGODB_DB} = process.env;
+const CONNECT = `mongodb://${MONGODB_IP}/${MONGODB_DB}`;
+
+mongoose.connect(CONNECT, {
     useFindAndModify: false,
     useNewUrlParser: true,
     useUnifiedTopology: true,
