@@ -64,7 +64,7 @@ a.active, nav ul li a:hover {
     line-height: 45px;
     color: white;
     float: right;
-    margin-right: 40px;
+    margin-right: 20px;
     cursor: pointer;
     display: none;
 }
@@ -147,6 +147,10 @@ a.active, nav ul li a:hover {
 }
 
 @media (max-width: 858px) {
+    .logo {
+        margin-left: 30px;
+    }
+
     .checkbtn {
         display: block;
     }
