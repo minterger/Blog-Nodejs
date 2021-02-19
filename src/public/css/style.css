@@ -76,13 +76,14 @@ a.active, nav ul li a:hover {
 
 /* tarjetas */
 .card {
-    margin: 30px auto;
+    margin: 40px auto;
     border-radius: 15px;
     min-height: 300px;
     display: flex;
     align-items: center;
     flex-direction: row;
-    box-shadow: 0 0 50px -9px grey;
+    /* box-shadow: 0 15px 30px rgb(60 72 94 / 45%); */
+    box-shadow: 2px 8px 30px rgb(60 72 94 / 45%);
 }
 
 .img-article {
@@ -124,7 +125,8 @@ a.active, nav ul li a:hover {
 }
 
 .container {
-    margin: 50px 15% auto 15% ;
+    margin: 40px 15% auto 15% ;
+    flex-direction: column;
 }
 /* fin tarjetas */
 
@@ -140,10 +142,7 @@ a.active, nav ul li a:hover {
         font-size: 16px;
     }
     .container {
-        margin: 20px 10% auto 10%;
-        flex-direction: column;
-        display: flex;
-        justify-content: center;
+        margin: 40px 10% auto 10%;
     }
 }
 
@@ -162,13 +161,12 @@ a.active, nav ul li a:hover {
     }
     nav ul li {
         display: flex;
-        margin: 50px;
+        margin: 40px 0px;
         line-height: 30px;
-        justify-content: center;
     }
     nav ul li a {
         font-size: 20px;
-        padding: 7px 60%;
+        width: 100vw;
         display: flex;
         justify-content: center;
     }
@@ -183,7 +181,6 @@ a.active, nav ul li a:hover {
     .card {
         flex-direction: column;
         max-width: 400px;
-        justify-content: center;
     }
     .img-article{
         border-radius: 10px 10px 0 0;
@@ -194,6 +191,6 @@ a.active, nav ul li a:hover {
         margin-top: 15px;
     }
     .container {
-        margin: 20px 5% auto 5%;
+        margin: 40px 5% auto 5%;
     }
 }
