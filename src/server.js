@@ -21,6 +21,7 @@ app.engine('hbs', exphbs({
 app.set('view engine', '.hbs');
 
 // middlewares
+app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(morgan('dev'));
 app.use(methodOverride('_method'));
@@ -39,10 +40,12 @@ app.use((req, res, next) => {
 });
 
 // helpers
-require('./helpers/hbs')
+require('./helpers/hbs');
 
 // routes
 app.use(require('./routes/index.routes'));
+app.use(require('./routes/articles.routes'));
+app.use(require('./routes/categories.routes'));
 
 // static files
 app.use(express.static(path.join(__dirname, 'public')));
