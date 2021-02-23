@@ -69,9 +69,6 @@ a.active, nav ul li a:hover {
     display: none;
 }
 
-#check {
-    display: none;
-}
 /* fin navegacion */
 
 /* tarjetas */
@@ -130,6 +127,59 @@ a.active, nav ul li a:hover {
 }
 /* fin tarjetas */
 
+/* alerts */
+
+.alert {
+    display: flex;
+    background-color: rgb(143, 226, 143);
+    height: 60px;
+    max-width: 420px;
+    /* min-width: 311px; */
+    position: fixed;
+    color: green;
+    top: 60px;
+    right: 0px;
+    border-radius: 4px;
+    border-left: 8px solid rgb(0, 187, 0);
+    align-items: center;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.5s, visibility 0.5s, right 1s;
+}
+
+.alert-hiden {
+    opacity: 0;
+    visibility: hidden;
+    right: -50px;
+}
+
+.alert .bxs-check-circle {
+    font-size: 1.8rem;
+    margin: auto 10px;
+    
+}
+
+.close-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 35px;
+    margin: auto 0px auto 10px; 
+    background-color: rgb(81, 225, 81);
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    background-color: rgb(54, 218, 54);
+}
+
+.close-btn .bx-x {
+    font-size: 1.5rem;
+}
+
+/* fin alerts */
+
 @media (max-width: 1124px) {
     .logo {
         font-size: 30px;
@@ -162,6 +212,7 @@ a.active, nav ul li a:hover {
         top: 50px;
         left: -100%;
         transition: all .5s;
+        z-index: 11111;
     }
     nav ul li {
         display: flex;
@@ -178,8 +229,13 @@ a.active, nav ul li a:hover {
         background: none;
         color: #e6685d;
     }
-    #check:checked ~ ul{
+    .navbar ul{
         left: 0;
+    }
+
+    .navbar {
+        top: 0;
+        position: fixed;
     }
 
     .card {
@@ -196,5 +252,9 @@ a.active, nav ul li a:hover {
     }
     .container {
         margin: 40px 5% auto 5%;
+    }
+
+    .margin-top {
+        margin-top: 90px;
     }
 }

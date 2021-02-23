@@ -50,4 +50,8 @@ app.use(require('./routes/categories.routes'));
 // static files
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use((req, res) => {
+    res.redirect('/')
+})
+
 module.exports = app;
