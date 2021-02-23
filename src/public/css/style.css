@@ -100,6 +100,10 @@ a.active, nav ul li a:hover {
     margin: 10px 10px;
 }
 
+.card-body {
+    width: 100%;
+}
+
 .fecha {
     color: rgb(60, 60, 60);
     margin-top: 10px;
@@ -145,6 +149,7 @@ a.active, nav ul li a:hover {
     visibility: visible;
     opacity: 1;
     transition: opacity 0.5s, visibility 0.5s, right 1s;
+    z-index: 11111;
 }
 
 .alert-hiden {
@@ -164,7 +169,7 @@ a.active, nav ul li a:hover {
     align-items: center;
     justify-content: center;
     height: 100%;
-    width: 35px;
+    width: 40px;
     margin: auto 0px auto 10px; 
     background-color: rgb(81, 225, 81);
     cursor: pointer;
@@ -212,7 +217,7 @@ a.active, nav ul li a:hover {
         top: 50px;
         left: -100%;
         transition: all .5s;
-        z-index: 11111;
+        z-index: 11111111;
     }
     nav ul li {
         display: flex;
