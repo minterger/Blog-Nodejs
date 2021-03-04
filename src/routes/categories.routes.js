@@ -1,6 +1,7 @@
-const {Router} = require('express');
-const { model } = require('mongoose');
+const { Router } = require('express');
 const {
+    renderCategories,
+    viewCategory,
     newCategoryForm,
     saveCategory,
     editCategoryForm,
@@ -8,6 +9,10 @@ const {
     deleteCategory
 } = require('../controllers/categories.controller');
 const router = Router();
+
+router.get('/category', renderCategories)
+
+router.get('/category/:category', viewCategory)
 
 router.get('/new-category', newCategoryForm);
 

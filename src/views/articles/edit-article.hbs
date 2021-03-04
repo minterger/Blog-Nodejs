@@ -1,4 +1,45 @@
-<form action="/delete-article/23423423423?_method=delete" method="POST">
-    <input type="hidden" name="_method" value="delete">
-    <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
-</form>
+<div id="container" class="container">
+    <div class="card-form">
+        <div class="card-header">
+            <h1>Edit Article</h1>
+        </div>
+
+        {{#if error}}
+        <span class="error">{{error}}</span>
+        {{/if}}
+
+        <form id="form" action="/edit-article/{{article._id}}?_method=put" method="POST">
+            <input type="hidden" name="_method" value="put">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" name="title" id="title" value="{{article.title}}" required>
+            </div>
+            <div class="form-group">
+                <label for="image">Image</label>
+                <input type="text" name="image" id="image" placeholder="Size: 500x500" value="{{article.image}}" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea name="description" id="description" rows="4" required>{{article.description}}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="content">Content</label>
+                <textarea name="contentMd" id="content"rows="25" required>{{article.contentMd}}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="select">Category</label>
+                <select name="category" id="select" required>
+                    {{#each category}}
+                    {{#if (compare ../article.category category)}}
+                    <option value="{{category}}" selected>{{categoryName}}</option>
+                    {{else}}
+                    <option value="{{category}}">{{categoryName}}</option>
+                    {{/if}}
+                    {{/each}}
+                </select>
+                <i></i>
+            </div>
+            <button class="card-form-button" form="form" type="submit">Publish</button>
+        </form>
+    </div>
+</div>

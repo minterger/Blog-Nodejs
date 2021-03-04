@@ -1,69 +1,103 @@
-<div class="card">
-    <img src="https://icdn8.digitaltrends.com/image/digitaltrends_es/jupiter-juno-2019-500x500.jpg" class="img-article" alt="">
-    <div class="card-body">
-        <div class="title">
-            <h2>Title of artilcle</h2>
-        </div>
-        <div class="description">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur dolor nisi modi itaque unde debitis odio eveniet porro ratione harum!</p>
-            <p class="fecha">10/03/2021 14:03 - <a href="" class="category">Planetas</a></p>
-        </div>
-        <a href="#" class="more">Read More</a>
+<div id="container" class="container">
+    <div class="btn-right">
+        <a href="/new-article" class="btn green">New Artile</a>
     </div>
-</div>
+    {{#each article}}
 
-<div class="card">
-    <img src="https://icdn8.digitaltrends.com/image/digitaltrends_es/jupiter-juno-2019-500x500.jpg" class="img-article" alt="">
-    <div class="card-body">
-        <div class="title">
-            <h2>Title of artilcle</h2>
+    <div class="card">
+        <img src="{{image}}" class="img-article" alt="">
+        <div class="card-body">
+            <div class="title">
+                <h2>{{title}}</h2>
+            </div>
+            <div class="description">
+                <p>{{description}}</p>
+                <p class="fecha">{{date createdAt}} - <a href="/category/{{category}}" class="category">{{category}}</a></p>
+            </div>
+            <a href="/article/{{titleUrl}}" class="more">Read More</a>
+            <form action="/delete-article/{{_id}}?_method=delete" method="POST">
+                <input type="hidden" name="_method" value="delete">
+                <button type="submit" class="btn btn-float-right red"><i class='bx bx-trash'></i></button>
+            </form>
+            <a href="/edit-article/{{_id}}" class="btn btn-float-right green"><i class='bx bx-edit'></i></a>
         </div>
-        <div class="description">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur dolor nisi modi itaque unde debitis odio eveniet porro ratione harum!</p>
-            <p class="fecha">10/03/2021 14:03 - <a href="" class="category">Planetas</a></p>
-        </div>
-        <a href="#" class="more">Read More</a>
     </div>
-</div>
 
-<div class="card">
-    <img src="https://icdn8.digitaltrends.com/image/digitaltrends_es/jupiter-juno-2019-500x500.jpg" class="img-article" alt="">
-    <div class="card-body">
-        <div class="title">
-            <h2>Title of artilcle</h2>
+    {{/each}}
+
+    <div class="card">
+        <img src="https://icdn8.digitaltrends.com/image/digitaltrends_es/jupiter-juno-2019-500x500.jpg" class="img-article" alt="">
+        <div class="card-body">
+            <div class="title">
+                <h2>Title of artilcle</h2>
+            </div>
+            <div class="description">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur dolor nisi modi itaque unde debitis odio eveniet porro ratione harum!</p>
+                <p class="fecha">10/03/2021 14:03 - <a href="" class="category">Planetas</a></p>
+            </div>
+            <a href="/article/728934623894362" class="more">Read More</a>
+            <form action="/delete-article/23423423423?_method=delete" method="POST">
+                <input type="hidden" name="_method" value="delete">
+                <button type="submit" class="btn btn-float-right red"><i class='bx bx-trash'></i></button>
+            </form>
+            <a href="/edit-article/121323" class="btn btn-float-right green"><i class='bx bx-edit'></i></a>
         </div>
-        <div class="description">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur dolor nisi modi itaque unde debitis odio eveniet porro ratione harum!</p>
-            <p class="fecha">10/03/2021 14:03 - <a href="" class="category">Planetas</a></p>
-        </div>
-        <a href="#" class="more">Read More</a>
     </div>
-</div>
 
-<div class="card">
-    <img src="https://icdn8.digitaltrends.com/image/digitaltrends_es/jupiter-juno-2019-500x500.jpg" class="img-article" alt="">
-    <div class="card-body">
-        <div class="title">
-            <h2>Title of artilcle</h2>
+    <div class="card">
+        <img src="https://icdn8.digitaltrends.com/image/digitaltrends_es/jupiter-juno-2019-500x500.jpg" class="img-article" alt="">
+        <div class="card-body">
+            <div class="title">
+                <h2>Title of artilcle</h2>
+            </div>
+            <div class="description">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur dolor nisi modi itaque unde debitis odio eveniet porro ratione harum!</p>
+                <p class="fecha">10/03/2021 14:03 - <a href="" class="category">Planetas</a></p>
+            </div>
+            <a href="/article/728934623894362" class="more">Read More</a>
+            <form action="/delete-article/23423423423?_method=delete" method="POST">
+                <input type="hidden" name="_method" value="delete">
+                <button type="submit" class="btn btn-float-right red"><i class='bx bx-trash'></i></button>
+            </form>
+            <a href="/edit-article/121323" class="btn btn-float-right green"><i class='bx bx-edit'></i></a>
         </div>
-        <div class="description">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur dolor nisi modi itaque unde debitis odio eveniet porro ratione harum!</p>
-            <p class="fecha">10/03/2021 14:03 - <a href="" class="category">Planetas</a></p>
-        </div>
-        <a href="#" class="more">Read More</a>
     </div>
-</div>
 
-<div class="card">
-    <img src="https://icdn8.digitaltrends.com/image/digitaltrends_es/jupiter-juno-2019-500x500.jpg" class="img-article" alt="">
-    <div class="card-body">
-        <div class="title">
-            <h2>Title of artilcle</h2>
+    <div class="card">
+        <img src="https://icdn8.digitaltrends.com/image/digitaltrends_es/jupiter-juno-2019-500x500.jpg" class="img-article" alt="">
+        <div class="card-body">
+            <div class="title">
+                <h2>Title of artilcle</h2>
+            </div>
+            <div class="description">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur dolor nisi modi itaque unde debitis odio eveniet porro ratione harum!</p>
+                <p class="fecha">10/03/2021 14:03 - <a href="" class="category">Planetas</a></p>
+            </div>
+            <a href="/article/728934623894362" class="more">Read More</a>
+            <form action="/delete-article/23423423423?_method=delete" method="POST">
+                <input type="hidden" name="_method" value="delete">
+                <button type="submit" class="btn btn-float-right red"><i class='bx bx-trash'></i></button>
+            </form>
+            <a href="/edit-article/121323" class="btn btn-float-right green"><i class='bx bx-edit'></i></a>
         </div>
-        <div class="description">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur dolor nisi modi itaque unde debitis odio eveniet porro ratione harum!</p>
-            <p class="fecha">10/03/2021 14:03 - <a href="" class="category">Planetas</a></p>
+    </div>
+
+    <div class="card">
+        <img src="https://icdn8.digitaltrends.com/image/digitaltrends_es/jupiter-juno-2019-500x500.jpg" class="img-article" alt="">
+        <div class="card-body">
+            <div class="title">
+                <h2>Title of artilcle</h2>
+            </div>
+            <div class="description">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur dolor nisi modi itaque unde debitis odio eveniet porro ratione harum!</p>
+                <p class="fecha">10/03/2021 14:03 - <a href="" class="category">Planetas</a></p>
+            </div>
+            <a href="/article/728934623894362" class="more">Read More</a>
+            <form action="/delete-article/23423423423?_method=delete" method="POST">
+                <input type="hidden" name="_method" value="delete">
+                <button type="submit" class="btn btn-float-right red"><i class='bx bx-trash'></i></button>
+            </form>
+            <a href="/edit-article/121323" class="btn btn-float-right green"><i class='bx bx-edit'></i></a>
         </div>
-        <a href="#" class="more">Read More</a>
     </div>
 </div>

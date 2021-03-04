@@ -1,0 +1,50 @@
+<div id="container" class="container">
+    <div class="card-form">
+        <div class="card-header">
+            <h1>New Article</h1>
+        </div>
+
+        {{#if error}}
+        <span class="error">{{error}}</span>
+        {{/if}}
+
+        <form action="/new-article" method="POST">
+            {{#if user}}
+            <input type="hidden" name="author" value="{{user.name}}" required>
+            {{else}}
+            <input type="hidden" name="author" value="Admin" required>
+            {{/if}}
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" name="title" id="title" value="{{article.title}}" required>
+            </div>
+            <div class="form-group">
+                <label for="image">Image</label>
+                <input type="text" name="image" placeholder="Size: 500x500" id="image" value="{{article.image}}" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea name="description" id="description" rows="4" required>{{article.description}}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="content">Content</label>
+                <textarea name="contentMd" id="content"rows="25" required>{{article.contentMd}}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="select">Category</label>
+                <select name="category" id="select" required>
+                    <option value="" disabled selected>Select</option>
+                    {{#each category}}
+                    {{#if (compare ../article.category category)}}
+                    <option value="{{category}}" selected>{{categoryName}}</option>
+                    {{else}}
+                    <option value="{{category}}">{{categoryName}}</option>
+                    {{/if}}
+                    {{/each}}
+                </select>
+                <i></i>
+            </div>
+            <button class="card-form-button" type="submit">Publish</button>
+        </form>
+    </div>
+</div>

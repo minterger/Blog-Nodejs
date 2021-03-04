@@ -1,9 +1,20 @@
 {{#if success_msg}}
-<div id="alert" class="alert">
+<div id="alert" class="alert success">
     <i class='bx bxs-check-circle' ></i>
     <span>{{success_msg}}</span>
-    <div id="close-btn" class="close-btn">
+    <div id="close-btn" class="close-btn close-success">
         <i class='bx bx-x'></i>
     </div>
 </div>
 {{/if}}
+
+{{#if error_msg}}
+<div id="alert" class="alert danger">
+    <i class='bx bxs-error-circle'></i>
+    <span>{{error_msg}}</span>
+    <div id="close-btn" class="close-btn close-danger">
+        <i class='bx bx-x'></i>
+    </div>
+</div>
+{{/if}}
+

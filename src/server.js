@@ -22,7 +22,7 @@ app.set('view engine', '.hbs');
 
 // middlewares
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
 app.use(morgan('dev'));
 app.use(methodOverride('_method'));
 app.use(session({
@@ -36,6 +36,7 @@ app.use(flash());
 app.use((req, res, next) => {
     // example
     res.locals.success_msg = req.flash('success_msg');
+    res.locals.error_msg = req.flash('error_msg');
     next()
 });
 
@@ -51,7 +52,14 @@ app.use(require('./routes/categories.routes'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use((req, res) => {
-    res.redirect('/')
+    req.flash('error_msg', 'This page does not exist, you were redirected');
+    res.redirect('/');
+})
+
+app.use('404', (req, res) => {
+    req.flash('error_msg', 'This page does not exist, you were redirected');
+    res.redirect('/');
+
 })
 
 module.exports = app;

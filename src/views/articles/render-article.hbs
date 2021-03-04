@@ -1,0 +1,14 @@
+<h1 id="title-article" class="title-article">{{article.title}}</h1>
+
+<div id="container" class="container">
+    <span class="author"><i class='bx bxs-user'></i> {{article.author}}</span>
+    <span class="date"><i class='bx bx-calendar'></i> {{date article.createdAt}}</span>
+    <span class="date"><i class='bx bxs-edit' ></i> {{date article.updatedAt}}</span>
+
+    <div class="container-content">
+        {{{article.content}}}
+
+    </div>
+</div>
+
+<script>hljs.initHighlightingOnLoad();</script>

@@ -1,5 +1,6 @@
-const {Router} = require('express');
+const { Router } = require('express');
 const {
+    renderArticle,
     newArticleForm,
     saveNewArticle,
     editArticleForm,
@@ -7,6 +8,8 @@ const {
     deleteArticle
 } = require('../controllers/articles.controller');
 const router = Router();
+
+router.get('/article/:title', renderArticle);
 
 router.get('/new-article', newArticleForm);
 

@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/img/logo.png" type="image/x-icon">
     <title>Blog</title>
+    <!--cdn highlight-->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/atom-one-dark.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
     <!-- BoxIcos -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <!-- Google Fonts -->
@@ -16,14 +19,14 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    
-    {{>navigation}}
 
     {{>messages}}
+    
+    {{>navigation}}
+    
+    {{{body}}}
 
-    <div id="container" class="container">
-        {{{body}}}
-    </div>
+    {{>footer}}
 
     <script src="/js/main.js"></script>
 </body>
