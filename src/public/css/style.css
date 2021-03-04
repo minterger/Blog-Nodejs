@@ -541,8 +541,9 @@ footer {
     .img-article{
         border-radius: 10px 10px 0 0;
         width: 100%;
-        max-width: none;
         height: auto;
+        min-width: unset;
+        max-width: unset;
     }
     .title {
         margin-top: 15px;

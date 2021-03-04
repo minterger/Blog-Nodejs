@@ -4,18 +4,18 @@ const Category = require('../models/Category');
 
 categoryCtrl.renderCategories = async (req, res) => {
     const category = await Category.find().lean()
-    res.render('categories/allCategories', {category});
+    res.render('categories/allCategories', { category });
 }
 
 categoryCtrl.viewCategory = async (req, res) => {
     try {
-        const category = await Category.findOne({category:req.params.category});
-        const article = await Article.find({category: category.category}).lean();
-        res.render('index', {article})
+        const category = await Category.findOne({ category: req.params.category });
+        const article = await Article.find({ category: category.category }).lean();
+        res.render('index', { article })
     } catch (error) {
         req.flash('error_msg', 'This Category does not exist');
         res.redirect('/category');
-    } 
+    }
 }
 
 categoryCtrl.newCategoryForm = (req, res) => {
@@ -34,14 +34,14 @@ categoryCtrl.saveCategory = async (req, res) => {
     } catch (err) {
         // console.error(err);
         let error = "Comprueba que la Categoria no este repetida";
-        res.render('categories/new-category', { error, categoryName });    
+        res.render('categories/new-category', { error, categoryName });
     }
 }
 
 categoryCtrl.editCategoryForm = async (req, res) => {
     try {
         const category = await Category.findById(req.params.id).lean();
-        res.render('categories/edit-category', {category});
+        res.render('categories/edit-category', { category });
     } catch (error) {
         req.flash('error_msg', 'This Category does not exist');
         res.redirect('/category');
@@ -49,14 +49,14 @@ categoryCtrl.editCategoryForm = async (req, res) => {
 }
 
 categoryCtrl.saveEditCategory = async (req, res) => {
-    const {categoryName} = req.body;
+    const { categoryName } = req.body;
     const category = categoryName.replace(/ /g, '-').toLowerCase();
     try {
-        const item = await Category.findByIdAndUpdate(req.params.id, {categoryName, category})
-        const article = await Article.find({category: item.category}) 
+        const item = await Category.findByIdAndUpdate(req.params.id, { categoryName, category })
+        const article = await Article.find({ category: item.category })
         if (article[0] != category) {
             article.forEach(async element => {
-                await Article.findByIdAndUpdate(element._id, {category});
+                await Article.findByIdAndUpdate(element._id, { category });
             })
         }
         req.flash('success_msg', 'category edited successfully');
@@ -64,15 +64,15 @@ categoryCtrl.saveEditCategory = async (req, res) => {
     } catch (err) {
         // console.error(err);
         let error = "Comprueba que la Categoria no este repetida";
-        res.render('categories/edit-category', {error, categoryName, category, _id: req.params.id});
+        res.render('categories/edit-category', { error, categoryName, category, _id: req.params.id });
     }
 }
 
 categoryCtrl.deleteCategory = async (req, res) => {
     try {
         const item = await Category.findByIdAndDelete(req.params.id);
-        const articles = await Article.find({category: item.category});
-        articles.forEach( async element => {
+        const articles = await Article.find({ category: item.category });
+        articles.forEach(async element => {
             await Article.findByIdAndDelete(element._id);
         });
         req.flash('success_msg', 'Category deleted successfully');
@@ -80,7 +80,7 @@ categoryCtrl.deleteCategory = async (req, res) => {
     } catch (err) {
         req.flash('error_msg', 'This Category does not exist');
         res.redirect('/category');
-        
+
     }
 }
 
