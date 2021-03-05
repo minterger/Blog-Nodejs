@@ -226,6 +226,23 @@ a.active, nav ul li a:hover {
 
 /* forms */
 
+.center-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-form-login {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    border-top: 15px solid #E34234;
+    box-shadow: 0 0 15px rgb(60, 60, 60);
+    padding: 15px 5% 30px 5%;
+    margin-bottom: 40px;
+}
+
 .card-form {
     border-radius: 10px;
     border-top: 15px solid rgba(60, 60, 60, 0.576);
