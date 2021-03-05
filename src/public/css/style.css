@@ -331,6 +331,7 @@ a.active, nav ul li a:hover {
 
 .btn-right {
     display: flex;
+    margin: -20px auto -20px auto;
     justify-content: flex-end;
 }
 
@@ -476,10 +477,7 @@ footer {
 }
 
 .btn-category {
-    top: 50px;
-    right: 10px;
-    position: absolute;
-    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .categories .categoryName {
@@ -518,13 +516,14 @@ footer {
     align-items: center;
     width: 35px;
     height: 35px;
-    color: rgb(0, 0, 0);
-    border: 1px solid #dddddd;
-    background-color: rgb(237, 237, 237);
+    color: whitesmoke;
+    border: 1px solid rgb(0, 120, 120);
+    background-color: teal;
+    transition: all .5s;
 }
 
 .pagination ul li a:hover {
-    background-color: #dddddd;
+    background-color: rgb(0, 151, 151);
 }
 
 @media (max-width: 1124px) {
