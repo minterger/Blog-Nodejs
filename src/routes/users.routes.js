@@ -6,6 +6,7 @@ const router = Router();
 const {
     renderLoginOrRegister,
     loginSave,
+    renderRegister,
     registerSave,
     logout
 } = require('../controllers/users.controller')
@@ -15,7 +16,7 @@ router.get('/login', renderLoginOrRegister);
 
 router.post('/login', loginSave);
 
-router.get('/register', isAuthenticated)
+router.get('/register', isAuthenticated, renderRegister)
 
 router.post('/register', registerSave);
 

@@ -8,12 +8,7 @@ const articleSchema = new Schema({
     content: { type: String, required: true },
     contentMd: { type: String, required: true },
     category: { type: String, required: true },
-    author: { type: String, required: true },
-    comments: [{
-        name: { type: String, },
-        comment: { type: String, },
-        date: { type: Date, default: Date.now }
-    }]
+    author: { type: String, required: true }
 }, {
     timestamps: true
 });
