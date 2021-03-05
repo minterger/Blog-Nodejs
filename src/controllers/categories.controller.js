@@ -8,10 +8,17 @@ categoryCtrl.renderCategories = async (req, res) => {
 }
 
 categoryCtrl.viewCategory = async (req, res) => {
+    const page = req.query.page || 1;
+    const limit = req.query.limit || 5;
     try {
-        const category = await Category.findOne({ category: req.params.category });
-        const article = await Article.find({ category: category.category }).sort({createdAt: -1}).lean();
-        res.render('index', { article })
+        const category = await Category.findOne({ category: req.params.category }).lean();
+        const article = await Article.paginate({ category: category.category }, {
+            page,
+            limit,
+            lean: true,
+            sort: { createdAt: -1 }
+        });
+        res.render('index', { article, category })
     } catch (error) {
         req.flash('error_msg', 'This Category does not exist');
         res.redirect('/category');

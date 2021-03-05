@@ -6,7 +6,7 @@
     </div>
     {{/if}}
 
-    {{#each article}}
+    {{#each article.docs}}
 
     <div class="card">
         <img src="{{image}}" class="img-article" alt="">
@@ -30,5 +30,35 @@
     </div>
 
     {{/each}}
+
+    <div class="pagination">
+        <ul>
+            {{#if article.hasPrevPage}}
+            {{#if category}}
+            <li><a href="/category/{{category.category}}?page={{article.prevPage}}"><i class='bx bxs-chevron-left'></i></a></li>
+            {{else}}
+            <li><a href="/?page={{article.prevPage}}"><i class='bx bxs-chevron-left'></i></a></li>
+            {{/if}}
+            {{/if}}
+            
+            {{#if category}}
+            {{#each (pagination article category.category)}}
+            {{{this}}}
+            {{/each}}
+            {{else}}
+            {{#each (pagination article)}}
+            {{{this}}}
+            {{/each}}
+            {{/if}}
+
+            {{#if article.hasNextPage}}
+            {{#if category}}
+            <li><a href="/category/{{category.category}}?page={{article.nextPage}}"><i class='bx bxs-chevron-right'></i></a></li>
+            {{else}}
+            <li><a href="/?page={{article.nextPage}}"><i class='bx bxs-chevron-right'></i></a></li>
+            {{/if}}
+            {{/if}}
+        </ul>
+    </div>
 
 </div>

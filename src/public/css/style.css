@@ -490,6 +490,43 @@ footer {
     color: teal;
 }
 
+/* paginacion */
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.pagination * {
+    text-decoration: none;
+    list-style: none;
+}
+
+.pagination ul {
+    display: flex;
+    color: darkgrey;
+}
+
+.pagination ul li {
+    display: inline-block;
+}
+
+.pagination ul li a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    color: rgb(0, 0, 0);
+    border: 1px solid #dddddd;
+    background-color: rgb(237, 237, 237);
+}
+
+.pagination ul li a:hover {
+    background-color: #dddddd;
+}
+
 @media (max-width: 1124px) {
     .logo {
         font-size: 30px;
