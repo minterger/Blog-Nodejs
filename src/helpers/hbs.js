@@ -9,10 +9,6 @@ hbs.handlebars.registerHelper('compare', (item1, item2) => {
     }
 })
 
-hbs.handlebars.registerHelper('username', (user) => {
-    return user.name;
-})
-
 hbs.handlebars.registerHelper('date', (date) => {
     if (date) {
         let dateNow = date.toLocaleDateString();
