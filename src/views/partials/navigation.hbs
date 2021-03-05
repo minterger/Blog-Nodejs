@@ -10,5 +10,8 @@
     <li><a href="/">Home</a></li>
     <li><a href="/category">Categories</a></li>
     <li><a href="/about">About</a></li>
+    {{#if user}}
+    <li><a href="/logout">Logout</a></li>
+    {{/if}}
   </ul>
 </nav>

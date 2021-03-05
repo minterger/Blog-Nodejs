@@ -1,8 +1,10 @@
 <div id="container" class="container">
 
+    {{#if user}}
     <div class="btn-right btn-category">
         <a href="/new-category" class="btn green">New Category</a>
     </div>
+    {{/if}}
 
     <div class="card-form">
         <div class="card-header">
@@ -12,6 +14,7 @@
         {{#each category}}
         <div class="categories">
             <a class="categoryName" href="/category/{{category}}">{{categoryName}}</a>
+            {{#if ../user}}
             <div>
                 <a href="/edit-category/{{_id}}" class="btn green"><i class='bx bx-edit'></i></a>
                 <form class="form-category" action="/delete-category/{{_id}}?_method=delete" method="POST">
@@ -19,6 +22,7 @@
                     <button type="submit" class="btn red"><i class='bx bx-trash'></i></button>
                 </form>
             </div>
+            {{/if}}
         </div>
         {{/each}}
 

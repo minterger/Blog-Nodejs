@@ -1,4 +1,5 @@
 const userCtrl = {}
+const passport = require('passport');
 const User = require('../models/User');
 
 userCtrl.renderLoginOrRegister = async (req, res) => {
@@ -10,31 +11,53 @@ userCtrl.renderLoginOrRegister = async (req, res) => {
     }
 }
 
-userCtrl.loginSave = (req, res) => {
-    res.redirect('/')
+userCtrl.loginSave = passport.authenticate('local', {
+    failureRedirect: '/login',
+    successRedirect: '/',
+    failureFlash: true 
+});
+
+userCtrl.renderRegister = (req, res) => {
+    res.render('users/register')
 }
 
 userCtrl.registerSave = async (req, res) => {
-    const { name, email, password, confirm_password } = req.body;
+    const { name, user_email, password, confirm_password } = req.body;
+    const email = user_email.toLowerCase();
     const errors = [];
-    if (password.length >= 7 ) {
-        const user = new User({
+    if (password.length <= 7) {
+        errors.push('password dont match')
+    }
+    if (password !== confirm_password ) {
+        errors.push('error password');
+    }
+    
+    if (errors.length <= 0) {
+        const newUser = new User({
             name,
             email,
             password
         })
-        user.password = user.matchPasswords(password);
+        newUser.password = await newUser.encryptPasswords(password);
         try {
-            await user.save();
+            await newUser.save();
+            req.flash('success_msg', 'Successfully registered user');
+            res.redirect('/login')
         } catch (error) {
             console.error(error);
-            errors.push('this email is already exist');
-            res.render('users/login', { errors });
+            errors.push('This email is already exist');
+            res.render('users/register', { errors });
         }
     } else {
-        errors.push('error password');
-        res.render('users/login', { errors });
+        console.log(email)
+        res.render('users/register', { errors });
     }
+}
+
+userCtrl.logout = (req, res) => {
+    req.logout();
+    req.flash('success_msg', 'You are logged out now');
+    res.redirect('/')
 }
 
 module.exports = userCtrl;

@@ -10,7 +10,7 @@ categoryCtrl.renderCategories = async (req, res) => {
 categoryCtrl.viewCategory = async (req, res) => {
     try {
         const category = await Category.findOne({ category: req.params.category });
-        const article = await Article.find({ category: category.category }).lean();
+        const article = await Article.find({ category: category.category }).sort({createdAt: -1}).lean();
         res.render('index', { article })
     } catch (error) {
         req.flash('error_msg', 'This Category does not exist');

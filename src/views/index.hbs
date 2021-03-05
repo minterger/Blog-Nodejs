@@ -1,7 +1,11 @@
 <div id="container" class="container">
+    
+    {{#if user}}
     <div class="btn-right">
         <a href="/new-article" class="btn green">New Artile</a>
     </div>
+    {{/if}}
+
     {{#each article}}
 
     <div class="card">
@@ -15,11 +19,13 @@
                 <p class="fecha">{{date createdAt}} - <a href="/category/{{category}}" class="category">{{category}}</a></p>
             </div>
             <a href="/article/{{titleUrl}}" class="more">Read More</a>
+            {{#if ../user}}
             <form action="/delete-article/{{_id}}?_method=delete" method="POST">
                 <input type="hidden" name="_method" value="delete">
                 <button type="submit" class="btn btn-float-right red"><i class='bx bx-trash'></i></button>
             </form>
             <a href="/edit-article/{{_id}}" class="btn btn-float-right green"><i class='bx bx-edit'></i></a>
+            {{/if}}
         </div>
     </div>
 
@@ -36,11 +42,13 @@
                 <p class="fecha">10/03/2021 14:03 - <a href="" class="category">Planetas</a></p>
             </div>
             <a href="/article/728934623894362" class="more">Read More</a>
+            {{#if user}}
             <form action="/delete-article/23423423423?_method=delete" method="POST">
                 <input type="hidden" name="_method" value="delete">
                 <button type="submit" class="btn btn-float-right red"><i class='bx bx-trash'></i></button>
             </form>
             <a href="/edit-article/121323" class="btn btn-float-right green"><i class='bx bx-edit'></i></a>
+            {{/if}}
         </div>
     </div>
 
@@ -55,11 +63,13 @@
                 <p class="fecha">10/03/2021 14:03 - <a href="" class="category">Planetas</a></p>
             </div>
             <a href="/article/728934623894362" class="more">Read More</a>
+            {{#if user}}
             <form action="/delete-article/23423423423?_method=delete" method="POST">
                 <input type="hidden" name="_method" value="delete">
                 <button type="submit" class="btn btn-float-right red"><i class='bx bx-trash'></i></button>
             </form>
             <a href="/edit-article/121323" class="btn btn-float-right green"><i class='bx bx-edit'></i></a>
+            {{/if}}
         </div>
     </div>
 
@@ -74,11 +84,13 @@
                 <p class="fecha">10/03/2021 14:03 - <a href="" class="category">Planetas</a></p>
             </div>
             <a href="/article/728934623894362" class="more">Read More</a>
+            {{#if user}}
             <form action="/delete-article/23423423423?_method=delete" method="POST">
                 <input type="hidden" name="_method" value="delete">
                 <button type="submit" class="btn btn-float-right red"><i class='bx bx-trash'></i></button>
             </form>
             <a href="/edit-article/121323" class="btn btn-float-right green"><i class='bx bx-edit'></i></a>
+            {{/if}}
         </div>
     </div>
 
@@ -93,11 +105,13 @@
                 <p class="fecha">10/03/2021 14:03 - <a href="" class="category">Planetas</a></p>
             </div>
             <a href="/article/728934623894362" class="more">Read More</a>
+            {{#if user}}
             <form action="/delete-article/23423423423?_method=delete" method="POST">
                 <input type="hidden" name="_method" value="delete">
                 <button type="submit" class="btn btn-float-right red"><i class='bx bx-trash'></i></button>
             </form>
             <a href="/edit-article/121323" class="btn btn-float-right green"><i class='bx bx-edit'></i></a>
+            {{/if}}
         </div>
     </div>
 </div>
