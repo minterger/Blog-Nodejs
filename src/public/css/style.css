@@ -510,7 +510,7 @@ footer {
     display: inline-block;
 }
 
-.pagination ul li a {
+.link {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -522,8 +522,16 @@ footer {
     transition: all .5s;
 }
 
-.pagination ul li a:hover {
+.link:hover {
     background-color: rgb(0, 151, 151);
+}
+
+.disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+}
+.selected {
+    background-color: rgb(0, 115, 115);
 }
 
 @media (max-width: 1124px) {

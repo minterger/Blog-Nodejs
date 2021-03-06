@@ -35,9 +35,9 @@
         <ul>
             {{#if article.hasPrevPage}}
             {{#if category}}
-            <li><a href="/category/{{category.category}}?page={{article.prevPage}}"><i class='bx bxs-chevron-left'></i></a></li>
+            <li><a class="link" href="/category/{{category.category}}?page={{article.prevPage}}"><i class='bx bxs-chevron-left'></i></a></li>
             {{else}}
-            <li><a href="/?page={{article.prevPage}}"><i class='bx bxs-chevron-left'></i></a></li>
+            <li><a class="link" href="/?page={{article.prevPage}}"><i class='bx bxs-chevron-left'></i></a></li>
             {{/if}}
             {{/if}}
             
@@ -53,9 +53,9 @@
 
             {{#if article.hasNextPage}}
             {{#if category}}
-            <li><a href="/category/{{category.category}}?page={{article.nextPage}}"><i class='bx bxs-chevron-right'></i></a></li>
+            <li><a class="link" href="/category/{{category.category}}?page={{article.nextPage}}"><i class='bx bxs-chevron-right'></i></a></li>
             {{else}}
-            <li><a href="/?page={{article.nextPage}}"><i class='bx bxs-chevron-right'></i></a></li>
+            <li><a class="link" href="/?page={{article.nextPage}}"><i class='bx bxs-chevron-right'></i></a></li>
             {{/if}}
             {{/if}}
         </ul>
