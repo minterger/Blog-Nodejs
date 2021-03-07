@@ -3,6 +3,7 @@ const Article = require('../models/Article');
 const Category = require('../models/Category');
 const marked = require('marked');
 
+// renderiza el contenido del un articulo
 articleCtl.renderArticle = async (req, res) => {
     try {
         const article = await Article.findOne({ titleUrl: req.params.title }).lean();
@@ -17,6 +18,7 @@ articleCtl.renderArticle = async (req, res) => {
     }
 }
 
+// muetra el formulario para crear un nuevo articulo
 articleCtl.newArticleForm = async (req, res) => {
     try {
         const category = await Category.find().lean();
@@ -26,6 +28,7 @@ articleCtl.newArticleForm = async (req, res) => {
     }
 }
 
+// guarda el articulo
 articleCtl.saveNewArticle = async (req, res) => {
     const { title, image, author, description, contentMd, category } = req.body;
     const article = new Article({ title, image, author, description, contentMd, content: marked(contentMd), category });
@@ -42,6 +45,7 @@ articleCtl.saveNewArticle = async (req, res) => {
     }
 }
 
+// muetra el formulario de edicion de articulos
 articleCtl.editArticleForm = async (req, res) => {
     try {
         const results = await Promise.all([
@@ -55,6 +59,7 @@ articleCtl.editArticleForm = async (req, res) => {
     }
 }
 
+// guarda el articulo editado
 articleCtl.saveEditArticle = async (req, res) => {
     const { title, image, description, contentMd, category } = req.body
     req.body._id = req.params.id
@@ -71,6 +76,7 @@ articleCtl.saveEditArticle = async (req, res) => {
     }
 }
 
+// elimina el articulo
 articleCtl.deleteArticle = async (req, res) => {
     try {
         await Article.findByIdAndDelete(req.params.id)

@@ -2,11 +2,13 @@ const categoryCtrl = {};
 const Article = require('../models/Article');
 const Category = require('../models/Category');
 
+// muestra todas las categorias existentes
 categoryCtrl.renderCategories = async (req, res) => {
     const category = await Category.find().lean()
     res.render('categories/allCategories', { category });
 }
 
+// muestra los articulos dentro de una categoria
 categoryCtrl.viewCategory = async (req, res) => {
     const page = req.query.page || 1;
     const limit = req.query.limit || 5;
@@ -25,10 +27,12 @@ categoryCtrl.viewCategory = async (req, res) => {
     }
 }
 
+// muestra el formulario para crear categorias
 categoryCtrl.newCategoryForm = (req, res) => {
     res.render('categories/new-category');
 }
 
+// guarda la categoria en la base de datos
 categoryCtrl.saveCategory = async (req, res) => {
     console.log(req.body);
     const { categoryName } = req.body
@@ -45,6 +49,7 @@ categoryCtrl.saveCategory = async (req, res) => {
     }
 }
 
+// muestra el formulario de edicion de categoria si la categoria existe
 categoryCtrl.editCategoryForm = async (req, res) => {
     try {
         const category = await Category.findById(req.params.id).lean();
@@ -55,6 +60,8 @@ categoryCtrl.editCategoryForm = async (req, res) => {
     }
 }
 
+/* guarda los datos de la categoria editada y 
+les modifica la categoria a los articulos que contienen esa categoria */
 categoryCtrl.saveEditCategory = async (req, res) => {
     const { categoryName } = req.body;
     const category = categoryName.replace(/ /g, '-').toLowerCase();
@@ -75,6 +82,8 @@ categoryCtrl.saveEditCategory = async (req, res) => {
     }
 }
 
+
+// elimina la categoria y los articulos que contiene
 categoryCtrl.deleteCategory = async (req, res) => {
     try {
         const item = await Category.findByIdAndDelete(req.params.id);

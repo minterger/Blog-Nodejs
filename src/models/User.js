@@ -9,13 +9,15 @@ const userSchema = new Schema({
     timestamps: true
 });
 
+// encrypta la contraseña del usuario al registrarse
 userSchema.methods.encryptPasswords = async (password) => {
     const salt = await bcrypt.genSalt(10);
     return await bcrypt.hash(password, salt);
 }
 
-userSchema.methods.matchPassword = async function (password) {
-    return await bcrypt.compare(password, this.password);
+// compara la contraseña del que intenta iniciar con la del usuario
+userSchema.methods.matchPassword = async (password, user_password) => {
+    return await bcrypt.compare(password, user_password);
 }
 
 module.exports = model('User', userSchema);

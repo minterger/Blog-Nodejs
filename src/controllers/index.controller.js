@@ -1,6 +1,7 @@
 const indexCtrl = {};
 const Article = require('../models/Article');
 
+// muestra todos los articulos
 indexCtrl.renderIndex = async (req, res) => {
     const page = req.query.page || 1;
     const limit = req.query.limit || 5;
@@ -17,6 +18,7 @@ indexCtrl.renderIndex = async (req, res) => {
 
 }
 
+// muestra el about page
 indexCtrl.renderAbout = (req, res) => {
     res.render('about');
 }

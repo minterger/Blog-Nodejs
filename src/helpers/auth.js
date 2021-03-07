@@ -1,5 +1,6 @@
 const helpers = {}
 
+// revisa si un user esta logueado
 helpers.isAuthenticated = (req, res, next) => {
     if (req.isAuthenticated()) {
         return next()

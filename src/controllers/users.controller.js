@@ -2,6 +2,8 @@ const userCtrl = {}
 const passport = require('passport');
 const User = require('../models/User');
 
+/* muetra el formulario de registro si no existe un user en la base de datos
+y si existe muetra el formulario de logueo */
 userCtrl.renderLoginOrRegister = async (req, res) => {
     const users = (await User.find()).length;
     if (users) {
@@ -11,16 +13,19 @@ userCtrl.renderLoginOrRegister = async (req, res) => {
     }
 }
 
+// intenta loguear a un usuario
 userCtrl.loginSave = passport.authenticate('local', {
     failureRedirect: '/login',
     successRedirect: '/',
     failureFlash: true 
 });
 
+// muetra el formulario de registro si el administrador quiere registrar un nuevo user
 userCtrl.renderRegister = (req, res) => {
     res.render('users/register')
 }
 
+// guarda al usuario registrado en la base de datos
 userCtrl.registerSave = async (req, res) => {
     const { name, user_email, password, confirm_password } = req.body;
     const email = user_email.toLowerCase();
@@ -54,6 +59,7 @@ userCtrl.registerSave = async (req, res) => {
     }
 }
 
+// termina la sesion de un usuario
 userCtrl.logout = (req, res) => {
     req.logout();
     req.flash('success_msg', 'You are logged out now');

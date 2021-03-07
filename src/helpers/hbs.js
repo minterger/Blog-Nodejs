@@ -1,6 +1,7 @@
 const { create } = require('express-handlebars');
 const hbs = create({});
 
+// compara dos items
 hbs.handlebars.registerHelper('compare', (item1, item2) => {
     if (item1 == item2) {
         return true
@@ -9,6 +10,7 @@ hbs.handlebars.registerHelper('compare', (item1, item2) => {
     }
 })
 
+// muestra la fecha según el lugar
 hbs.handlebars.registerHelper('date', (date) => {
     if (date) {
         let dateNow = date.toLocaleDateString();
@@ -18,6 +20,7 @@ hbs.handlebars.registerHelper('date', (date) => {
     }
 })
 
+// renderiza la paginacion
 hbs.handlebars.registerHelper('pagination', (article, category) => {
     if (article.totalPages > 1) {
         
