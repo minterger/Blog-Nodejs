@@ -11,13 +11,16 @@ passport.use(new LocalStrategy({
     email = email.toLowerCase();
     // match email
     try {
+        // comprobar si existe un user con ese email
         const user = await User.findOne({email});
         if (!user) {
-            return done(null, false, { message: 'User Not Found'});
+            return done(null, false, { message: 'Incorrect Password or Email'});
         }
-        const passwordMatch = await user.matchPassword(password);
+
+        // comprobar si la contraseña puesta coincide con la del user
+        const passwordMatch = await user.matchPassword(password, user.password);
         if (!passwordMatch) {
-            return done(null, false, { message: 'Incorrect Password'});
+            return done(null, false, { message: 'Incorrect Password or Email'});
         }
         return done(null, user)
     } catch (error) {
@@ -25,6 +28,8 @@ passport.use(new LocalStrategy({
     }
 
 }))
+
+// mantiene la sesion activa
 
 passport.serializeUser((user, done) => {
     done(null, user.id)
