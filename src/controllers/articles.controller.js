@@ -1,20 +1,44 @@
 const articleCtl = {};
 const Article = require('../models/Article');
 const Category = require('../models/Category');
+const Comment = require('../models/Comment');
 const marked = require('marked');
+const md5 = require('md5');
 
 // renderiza el contenido del un articulo
 articleCtl.renderArticle = async (req, res) => {
     try {
         const article = await Article.findOne({ titleUrl: req.params.title }).lean();
+        const comments = await Comment.find({ postId: article._id }).sort({ createdAt: -1 }).lean();
         if (article) {
-            res.render('articles/render-article', { article });
+            res.render('articles/render-article', { article, comments });
         } else {
             throw new Error('This article does not exist');
         }
     } catch (error) {
         req.flash('error_msg', error.message);
         res.redirect('/');
+    }
+}
+
+articleCtl.postComment = async (req, res) => {
+    const { name, email, comment } = req.body;
+    if (name != 'Minterger' && name != 'minterger' || req.user) {
+        const commentary = new Comment({ name, email, comment });
+        commentary.gravatar = md5(commentary.email);
+        commentary.postId = req.params.postId;
+        try {
+            await commentary.save();
+            req.flash('success_msg', 'Commentary added');
+            res.redirect('/article/' + req.params.titleUrl)
+        } catch (error) {
+            console.log(error);
+            req.flash('error_msg', 'error');
+            res.redirect('/article/' + req.params.titleUrl)
+        }
+    } else {
+        req.flash('error_msg', 'Name Of Admin');
+        res.redirect('/article/' + req.params.titleUrl)
     }
 }
 
@@ -79,7 +103,14 @@ articleCtl.saveEditArticle = async (req, res) => {
 // elimina el articulo
 articleCtl.deleteArticle = async (req, res) => {
     try {
-        await Article.findByIdAndDelete(req.params.id)
+        await Article.findByIdAndDelete(req.params.id);
+        const comments = await Comment.find({ postId: req.params.id });
+        console.log(comments.length)
+        if (comments.length >= 1) {
+            comments.forEach(async item => {
+                await Comment.findByIdAndDelete(item._id);
+            });
+        }
         req.flash('success_msg', 'Article Deleted Successfully');
     } catch (error) {
         req.flash('error_msg', 'This article does not exist')

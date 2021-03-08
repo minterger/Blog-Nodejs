@@ -534,6 +534,42 @@ footer {
     background-color: rgb(0, 115, 115);
 }
 
+/* fin paginacion */
+
+/* commentarios en los articulos */
+
+.comments {
+    padding: 10px 0 10px 0;
+    border-top: 1px solid #616b76;
+}
+
+.commentary {
+    display: flex;
+    margin: 20px 0 20px 0px;
+}
+
+.commentary div {
+    display: flex;
+    flex-direction: column;
+}
+
+.commentary span {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.commentary img {
+    border-radius: 50px;
+    width: 50px;
+    height: 50px;
+    margin: 0 10px;
+}
+
+.card-comment {
+    margin-top: 20px;
+    padding: 10px 0;
+}
+
 @media (max-width: 1124px) {
     .logo {
         font-size: 30px;

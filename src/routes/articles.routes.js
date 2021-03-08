@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const {
     renderArticle,
+    postComment,
     newArticleForm,
     saveNewArticle,
     editArticleForm,
@@ -11,6 +12,8 @@ const router = Router();
 const { isAuthenticated } = require('../helpers/auth');
 
 router.get('/article/:title', renderArticle);
+
+router.post('/comments/:titleUrl/:postId', postComment)
 
 router.get('/new-article', isAuthenticated, newArticleForm);
 
