@@ -1,7 +1,7 @@
-let menu = document.getElementById('menu');
-let navbar = document.getElementById('navbar');
-let container = document.getElementById('container');
-let titleArticle = document.getElementById('title-article')
+const menu = document.getElementById('menu');
+const navbar = document.getElementById('navbar');
+const container = document.getElementById('container');
+const titleArticle = document.getElementById('title-article')
 
 menu.addEventListener('click', () => {
     navbar.classList.toggle('navbar');
@@ -9,8 +9,8 @@ menu.addEventListener('click', () => {
     titleArticle.classList.toggle('title-margin');
 });
 
-let alert = document.getElementById('alert');
-let close_btn = document.getElementById('close-btn');
+const alert = document.getElementById('alert');
+const close_btn = document.getElementById('close-btn');
 
 close_btn.addEventListener('click', () => {
     alert.classList.toggle('alert-hiden');
