@@ -67,12 +67,14 @@ categoryCtrl.saveEditCategory = async (req, res) => {
     const category = categoryName.replace(/ /g, '-').toLowerCase();
     try {
         const item = await Category.findByIdAndUpdate(req.params.id, { categoryName, category })
-        const article = await Article.find({ category: item.category })
-        if (article[0] != category) {
-            article.forEach(async element => {
-                await Article.findByIdAndUpdate(element._id, { category });
-            })
-        }
+        const response = await Article.updateMany({ category: item.category }, {$set: {category}})
+        console.log(response)
+        // const article = await Article.find({ category: item.category })
+        // if (article[0] != category) {
+        //     article.forEach(async element => {
+        //         await Article.findByIdAndUpdate(element._id, { category });
+        //     })
+        // }
         req.flash('success_msg', 'category edited successfully');
         res.redirect('/category');
     } catch (err) {
@@ -87,10 +89,8 @@ categoryCtrl.saveEditCategory = async (req, res) => {
 categoryCtrl.deleteCategory = async (req, res) => {
     try {
         const item = await Category.findByIdAndDelete(req.params.id);
-        const articles = await Article.find({ category: item.category });
-        articles.forEach(async element => {
-            await Article.findByIdAndDelete(element._id);
-        });
+        const response = await Article.deleteMany({category: item.category});
+        console.log(response);
         req.flash('success_msg', 'Category deleted successfully');
         res.redirect('/category');
     } catch (err) {

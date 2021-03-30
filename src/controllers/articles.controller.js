@@ -103,17 +103,12 @@ articleCtl.saveEditArticle = async (req, res) => {
 // elimina el articulo
 articleCtl.deleteArticle = async (req, res) => {
     try {
-        await Article.findByIdAndDelete(req.params.id);
-        const comments = await Comment.find({ postId: req.params.id });
-        console.log(comments.length)
-        if (comments.length >= 1) {
-            comments.forEach(async item => {
-                await Comment.findByIdAndDelete(item._id);
-            });
-        }
+        const item = await Article.findByIdAndDelete(req.params.id);
+        const response = await Comment.deleteMany({ postId: item._id });
+        console.log(response);
         req.flash('success_msg', 'Article Deleted Successfully');
     } catch (error) {
-        req.flash('error_msg', 'This article does not exist')
+        req.flash('error_msg', 'This article does not exist');
 
     }
     res.redirect('/');

@@ -10,6 +10,7 @@
 
     </div>
     <div class="comments">
+        {{#if comments}}
         <h3>Comments</h3>
 
         {{#each comments}}
@@ -22,22 +23,8 @@
             </div>
         </div>
         {{/each}}
-        <div class="commentary">
-            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.UMQnAPin9x3JMwKrz-4C1wHaHa%26pid%3DApi&f=1" alt="">
-            <div>
-                <span>Name name</span>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa quibusdam architecto fugiat! Itaque reprehenderit, eius distinctio nemo sapiente sit nesciunt.</p>
-                <p class="fecha">12/12/2021</p>
-            </div>
-        </div>
-        <div class="commentary">
-            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.UMQnAPin9x3JMwKrz-4C1wHaHa%26pid%3DApi&f=1" alt="">
-            <div>
-                <span>Name de name</span>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero pariatur laudantium nam iusto est. Omnis.</p>
-                <p class="fecha">12/12/2021</p>
-            </div>
-        </div>
+
+        {{/if}}
 
 
         <div class="card-comment">
