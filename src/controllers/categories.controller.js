@@ -66,15 +66,9 @@ categoryCtrl.saveEditCategory = async (req, res) => {
     const { categoryName } = req.body;
     const category = categoryName.replace(/ /g, '-').toLowerCase();
     try {
-        const item = await Category.findByIdAndUpdate(req.params.id, { categoryName, category })
-        const response = await Article.updateMany({ category: item.category }, {$set: {category}})
-        console.log(response)
-        // const article = await Article.find({ category: item.category })
-        // if (article[0] != category) {
-        //     article.forEach(async element => {
-        //         await Article.findByIdAndUpdate(element._id, { category });
-        //     })
-        // }
+        const item = await Category.findByIdAndUpdate(req.params.id, { categoryName, category });
+        const response = await Article.updateMany({ category: item.category }, {category});
+        console.log(response);
         req.flash('success_msg', 'category edited successfully');
         res.redirect('/category');
     } catch (err) {
